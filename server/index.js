@@ -1,8 +1,13 @@
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const Session = require('koa-session')
 
 const app = new Koa()
+
+// Set up an Koa session, which is required for CASAuthentication.
+app.keys = ['some secret hurr']
+app.use(Session(app))
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
@@ -20,10 +25,13 @@ async function start() {
   // Instantiate nuxt.js
   const nuxt = new Nuxt(config)
 
-  const {
-    host = process.env.HOST || '127.0.0.1',
-    port = process.env.PORT || 3000
-  } = nuxt.options.server
+  // const {
+  //   host = process.env.HOST || '127.0.0.1',
+  //   port = process.env.PORT || 3000
+  // } = nuxt.options.server
+
+  const host = '0.0.0.0'
+  const port = 3000
 
   // Build in development
   if (config.dev) {
