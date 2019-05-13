@@ -21,7 +21,7 @@ body,
 #app {
   width: 1920px;
   height: 1080px;
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 .wh100per {
