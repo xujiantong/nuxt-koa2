@@ -33,4 +33,7 @@ export default class {
   static getAll() {
     return Http.get('/students/getAll')
   }
+  static updateScore(params) {
+    return Http.put('/students/updateScore', params)
+  }
 }

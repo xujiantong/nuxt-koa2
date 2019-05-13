@@ -13,13 +13,10 @@ module.exports = {
     const result = await query(sql)
     return result
   },
-  async update(info) {
-    const sql = ``
-    const result = await query(sql)
-    return result
-  },
-  async insert(info) {
-    const sql = ``
+  async updateScore(info) {
+    const sql = `UPDATE students SET score=${info.score} where name=${
+      info.name
+    };`
     const result = await query(sql)
     return result
   }
