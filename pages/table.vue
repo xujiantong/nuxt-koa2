@@ -25,6 +25,9 @@ export default {
       table: []
     }
   },
+  head() {
+    return { title: '学生管理' }
+  },
   created() {
     this.getAll()
   },

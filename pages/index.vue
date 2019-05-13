@@ -103,6 +103,9 @@ export default {
       isLoading: false
     }
   },
+  head() {
+    return { title: '数据资源视图' }
+  },
   async beforeCreate() {
     Vue.prototype.timeInterval = await api.getInterval()
     this.isLoading = true
