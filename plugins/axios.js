@@ -100,12 +100,8 @@ export default class Http {
    * @returns
    */
   static responseHandler(res) {
-    // eslint-disable-next-line no-console
-    console.log(res)
     return new Promise(function(resolve, reject) {
       if (res.data.code === Http.HTTP_CODE.SUCCESS) {
-        // eslint-disable-next-line no-console
-        console.log(res.data.data)
         resolve(res.data.data)
       } else {
         Message.error({ message: res.data.message })
