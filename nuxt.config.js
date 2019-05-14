@@ -1,5 +1,5 @@
 const pkg = require('./package')
-
+require('dotenv').config()
 module.exports = {
   mode: 'spa',
 
@@ -38,7 +38,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    ['@nuxtjs/dotenv', { systemvars: true }]
   ],
   /*
    ** Axios module configuration
@@ -47,12 +48,12 @@ module.exports = {
     proxy: true
   },
   proxy: {
-    '/api': {
-      target: 'http://example.com',
-      pathRewrite: {
-        '^/api': '/'
-      }
-    }
+    // '/api': {
+    //   target: 'http://example.com',
+    //   pathRewrite: {
+    //     '^/api': '/'
+    //   }
+    // }
   },
   /*
    ** Build configuration

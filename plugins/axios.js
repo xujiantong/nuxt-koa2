@@ -26,7 +26,9 @@ axios.interceptors.response.use(
     } else if (err.response.status === 403) {
       Message.error({ message: '权限不足,请联系管理员!' })
     } else if (err.response.status === 401) {
-      window.location.href = `http://192.168.92.3:8080/cas-server/login?service=http://127.0.0.1:3000/cas/app`
+      window.location.href = `${process.env.CAS_URL}/login?service=http://${
+        process.env.SERVER_HOST
+      }:${process.env.SERVER_PORT}/cas/app`
     } else {
       Message.error({ message: '未知错误!' })
     }
