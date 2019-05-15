@@ -1,17 +1,12 @@
 const router = require('koa-router')()
+const rest = require('../middleware/rest')
 const cas = require('../config/cas')
 
-router.get('/app', cas.bounce, ctx => {
-  ctx.redirect('/table')
-})
-router.get('/authenticate', cas.bounce_redirect)
-
-router.get('/user', cas.block, ctx => {
-  ctx.body = {
+router.get('/user', ctx => {
+  const result = {
     cas_user: ctx.session[cas.session_name]
   }
+  ctx.body = rest.restify(result)
 })
-
 router.get('/logout', cas.logout)
-
 module.exports = router

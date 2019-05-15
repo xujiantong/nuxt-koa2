@@ -25,10 +25,6 @@ axios.interceptors.response.use(
       Message.error({ message: '服务器找不到' })
     } else if (err.response.status === 403) {
       Message.error({ message: '权限不足,请联系管理员!' })
-    } else if (err.response.status === 401) {
-      window.location.href = `${process.env.CAS_URL}/login?service=http://${
-        process.env.SERVER_HOST
-      }:${process.env.SERVER_PORT}/cas/app`
     } else {
       Message.error({ message: '未知错误!' })
     }

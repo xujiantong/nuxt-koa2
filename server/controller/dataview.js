@@ -1,6 +1,5 @@
 const router = require('koa-router')()
 const rest = require('../middleware/rest')
-const cas = require('../config/cas')
 const {
   listProductors,
   listConsumers,
@@ -11,37 +10,37 @@ const {
   getInterval
 } = require('../service/dataview')
 
-router.get('/listProductors', cas.block, async (ctx, next) => {
+router.get('/listProductors', async ctx => {
   const result = await listProductors()
   ctx.body = rest.restify(result)
 })
 
-router.get('/listConsumers', cas.block, async (ctx, next) => {
+router.get('/listConsumers', async ctx => {
   const result = await listConsumers()
   ctx.body = rest.restify(result)
 })
 
-router.get('/getResourceTotal', cas.block, async (ctx, next) => {
+router.get('/getResourceTotal', async ctx => {
   const result = await getResourceTotal()
   ctx.body = rest.restify(result)
 })
 
-router.get('/getRecordOverview', cas.block, async (ctx, next) => {
+router.get('/getRecordOverview', async ctx => {
   const result = await getRecordOverview()
   ctx.body = rest.restify(result)
 })
 
-router.get('/listInputOverview', cas.block, async (ctx, next) => {
+router.get('/listInputOverview', async ctx => {
   const result = await listInputOverview()
   ctx.body = rest.restify(result)
 })
 
-router.get('/listOutputOverview', cas.block, async (ctx, next) => {
+router.get('/listOutputOverview', async ctx => {
   const result = await listOutputOverview()
   ctx.body = rest.restify(result)
 })
 
-router.get('/getInterval', cas.block, async (ctx, next) => {
+router.get('/getInterval', async ctx => {
   const result = await getInterval()
   ctx.body = rest.restify(result)
 })

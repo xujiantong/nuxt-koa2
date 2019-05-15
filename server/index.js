@@ -18,6 +18,10 @@ async function start() {
   const routes = require('./controller/index')
   app.use(routes.routes(), routes.allowedMethods())
 
+  // CASAuthentication
+  const cas = require('./config/cas')
+  app.use(cas.bounce)
+
   // parse request body
   const bodyParser = require('koa-bodyparser')
   app.use(bodyParser())
@@ -40,7 +44,7 @@ async function start() {
     nuxt.render(ctx.req, ctx.res)
   })
 
-  app.listen(process.env.SERVER_PORT, process.env.SERVER_HOST)
+  app.listen(process.env.SERVER_PORT)
   consola.ready({
     message: `Server listening on http://${process.env.SERVER_HOST}:${
       process.env.SERVER_PORT
